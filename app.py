@@ -38,5 +38,5 @@ if uploaded_file is not None:
 
     # Display the results
     st.write(f"Predicted Age: {age}")
-    st.write(f"Gender raw prediction: {gender_pred[0][0]}")
+    st.write(f"Gender raw prediction: {gender}")
 
