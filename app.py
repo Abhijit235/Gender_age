@@ -10,6 +10,7 @@ os.system("bash setup.sh")
 # Load the saved model
 model = load_model('age_gender_model.keras')
 
+
 # Streamlit App
 st.title("Age and Gender Detection App")
 
@@ -21,7 +22,8 @@ if uploaded_file is not None:
     image = Image.open(uploaded_file)
     image = np.array(image)
     image_resized = cv2.resize(image, (128, 128)) / 255.0
-    image_resized = np.expand_dims(image_resized, axis=0)
+    image_resized = np.expand_dims(image_resized, axis=0)  # Add batch dimension
+
 
     # Display the image
     st.image(image, caption='Uploaded Image', use_column_width=True)
@@ -31,6 +33,8 @@ if uploaded_file is not None:
     age = int(age_pred[0][0])
     gender = 'Male' if gender_pred[0][0] > 0.5 else 'Female'
 
+
     # Display the results
     st.write(f"Predicted Age: {age}")
-    st.write(f"Predicted Gender: {gender}")
+    st.write(f"Gender raw prediction: {gender_pred[0][0]}")
+
