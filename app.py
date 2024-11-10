@@ -32,7 +32,7 @@ if uploaded_file is not None:
     age_pred, gender_pred = model.predict(image_resized)
     age = int(age_pred[0][0])
     # Adjusting the threshold for gender classification
-    gender = 'Male' if gender_pred[0][0] > 0.1 else 'Female'
+    gender = 'Male' if gender_pred[0][0] < 0.1 else 'Female'
 
 
 
